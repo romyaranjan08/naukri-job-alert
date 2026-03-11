@@ -1,5 +1,8 @@
 name: Naukri Job Bot
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "30 3 * * *"
