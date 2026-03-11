@@ -8,7 +8,11 @@ const CHAT_ID = process.env.CHAT_ID;
 async function sendJobs() {
   const jobs = await getJobs();
 
-  const sentJobs = JSON.parse(fs.readFileSync("./data/sentJobs.json"));
+  let sentJobs = [];
+
+  if (fs.existsSync("./data/sentJobs.json")) {
+    sentJobs = JSON.parse(fs.readFileSync("./data/sentJobs.json"));
+  }
 
   const newJobs = jobs.filter((job) => !sentJobs.includes(job.link));
 
